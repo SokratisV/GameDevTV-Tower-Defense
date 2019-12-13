@@ -2,22 +2,37 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
+[SelectionBase]
+[RequireComponent(typeof(Waypoint))]
 public class CubeEditor : MonoBehaviour
 {
-    [SerializeField] [Range(1f, 20f)] float gridSize = 10f;
-    TextMeshProUGUI worldSpaceText;
-    Vector3 snapPos;
+    Waypoint waypoint;
 
-    private void Start()
+    private void Awake()
     {
-        worldSpaceText = GetComponentInChildren<TextMeshProUGUI>();
+        waypoint = GetComponent<Waypoint>();
     }
 
     void Update()
     {
-        snapPos.x = Mathf.RoundToInt(transform.position.x / gridSize) * gridSize;
-        snapPos.z = Mathf.RoundToInt(transform.position.z / gridSize) * gridSize;
-        transform.position = new Vector3(snapPos.x, 0, snapPos.z);
-        worldSpaceText.text = $"{snapPos.x / gridSize}.{snapPos.z / gridSize}";
+        SnapToGrid();
+        UpdateLabel();
+    }
+
+    private void SnapToGrid()
+    {
+        Vector2 pos = waypoint.GetGridPos();
+        int gridSize = waypoint.GetGridSize();
+        transform.position = new Vector3(pos.x * gridSize, 0, pos.y * gridSize);
+    }
+
+    private void UpdateLabel()
+    {
+        Vector2 pos = waypoint.GetGridPos();
+        TextMeshProUGUI worldSpaceText = GetComponentInChildren<TextMeshProUGUI>();
+
+        string labelText = $"{pos.x}.{pos.y}";
+        worldSpaceText.text = labelText;
+        name = labelText;
     }
 }
