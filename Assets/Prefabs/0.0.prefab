@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 3924905342337765403}
   - component: {fileID: 8287681196619982304}
   - component: {fileID: 5036325058164064426}
+  - component: {fileID: 3619730373941744832}
   m_Layer: 0
   m_Name: 0.0
   m_TagString: Untagged
@@ -158,6 +159,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exploredFrom: {fileID: 0}
+  towerPrefab: {fileID: 6919070895556085483, guid: 7a40e7103e05e37498832864667211c5,
+    type: 3}
+--- !u!65 &3619730373941744832
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3924905342337765402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: -5, z: 0}
 --- !u!1 &3924905343264319825
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +264,7 @@ MeshCollider:
   m_GameObject: {fileID: 3924905343264319825}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 30
