@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float movementPeriod = .5f;
+    [SerializeField] int damageToPlayer = 1;
     [SerializeField] ParticleSystem selfDestructParticles;
     private void Start()
     {
@@ -20,5 +21,6 @@ public class EnemyMovement : MonoBehaviour
             yield return new WaitForSeconds(movementPeriod);
         }
         GetComponentInParent<EnemyDamage>().KillEnemy(selfDestructParticles);
+        FindObjectOfType<PlayerHealth>().ReduceHealth(damageToPlayer);
     }
 }

@@ -51,7 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee45527440ba25468ba91843a65d994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementPeriod: 0.75
+  movementPeriod: 1.5
+  damageToPlayer: 1
+  selfDestructParticles: {fileID: 198537984209914932, guid: da531a02ced42ef47b79cbb95b094519,
+    type: 3}
 --- !u!54 &907063491571924093
 Rigidbody:
   m_ObjectHideFlags: 0
