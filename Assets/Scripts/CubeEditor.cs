@@ -29,10 +29,10 @@ public class CubeEditor : MonoBehaviour
     private void UpdateLabel()
     {
         Vector2 pos = waypoint.GetGridPos();
-        TextMeshProUGUI worldSpaceText = GetComponentInChildren<TextMeshProUGUI>();
+        // TextMeshProUGUI worldSpaceText = GetComponentInChildren<TextMeshProUGUI>();
 
         string labelText = $"{pos.x}.{pos.y}";
-        worldSpaceText.text = labelText;
+        // worldSpaceText.text = labelText;
         name = labelText;
     }
 }

@@ -70,12 +70,6 @@ public class Pathfinder : MonoBehaviour
         neighbor.exploredFrom = searchCenter;
     }
 
-    private void ColorStartAndEnd()
-    {
-        startWaypoint.SetTopColor(Color.green);
-        endWaypoint.SetTopColor(Color.red);
-    }
-
     private void LoadBlocks()
     {
         var waypoints = FindObjectsOfType<Waypoint>();
@@ -83,17 +77,22 @@ public class Pathfinder : MonoBehaviour
         {
             bool isOverlapping = grid.ContainsKey(waypoint.GetGridPos());
             if (isOverlapping) { continue; }
-            waypoint.SetTopColor(Color.black);
             grid.Add(waypoint.GetGridPos(), waypoint);
         }
+        print(grid.Count);
     }
 
     public List<Waypoint> GetPath()
     {
+        if (path.Count == 0)
+            CalculatePath();
+        return path;
+    }
+
+    private void CalculatePath()
+    {
         LoadBlocks();
-        ColorStartAndEnd();
         BFS();
         CreatePath();
-        return path;
     }
 }
