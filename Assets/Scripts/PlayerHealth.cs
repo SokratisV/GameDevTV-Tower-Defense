@@ -5,6 +5,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] int health = 50;
     [SerializeField] TextMeshProUGUI healthText;
+    [SerializeField] AudioClip playerDamageSFX;
 
     private void Start()
     {
@@ -15,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= amount;
         healthText.text = health.ToString();
+        GetComponent<AudioSource>().PlayOneShot(playerDamageSFX);
         if (health <= 0)
         {
             //dead
